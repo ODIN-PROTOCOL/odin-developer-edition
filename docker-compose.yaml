@@ -1,0 +1,56 @@
+version: "3.7"
+
+services:
+  multi-validator1-node:
+    image: odinprotocol/band-validator:initial
+    networks:
+      bandchain:
+        ipv4_address: 172.18.0.11
+    command: sh -c "chmod +x ./run.sh && ./run.sh validator1"
+
+  multi-validator2-node:
+    image: odinprotocol/band-validator:initial
+    networks:
+      bandchain:
+        ipv4_address: 172.18.0.12
+    command: sh -c "chmod +x ./run.sh && ./run.sh validator2"
+
+  multi-validator3-node:
+    image: odinprotocol/band-validator:initial
+    networks:
+      bandchain:
+        ipv4_address: 172.18.0.13
+    command: sh -c "chmod +x ./run.sh && ./run.sh validator3"
+
+  multi-validator4-node:
+    image: odinprotocol/band-validator:initial
+    networks:
+      bandchain:
+        ipv4_address: 172.18.0.14
+    command: sh -c "chmod +x ./run.sh && ./run.sh validator4"
+
+  query-node:
+    image: odinprotocol/band-validator:initial
+    ports:
+      - 26657:26657
+    networks:
+      bandchain:
+        ipv4_address: 172.18.0.15
+    command: sh -c "chmod +x ./run.sh && ./run.sh query-node"
+
+  rest-server:
+    image: odinprotocol/band-validator:initial
+    networks:
+      bandchain:
+        ipv4_address: 172.18.0.20
+    restart: always
+    ports:
+      - 1317:1317
+    command: bandcli rest-server --laddr tcp://0.0.0.0:1317 --node tcp://172.18.0.15:26657 --chain-id bandchain --trust-node
+
+networks:
+  bandchain:
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.18.0.0/16"

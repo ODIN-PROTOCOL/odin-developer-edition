@@ -1,45 +1,59 @@
-version: "3.7"
+version: "3.5"
 
 services:
-  multi-validator1-node:
-    image: odinprotocol/band-validator:initial
+  validator1:
+    image: odinprotocol/core:latest
+    container_name: validator1
     networks:
       bandchain:
         ipv4_address: 172.18.0.11
     command: sh -c "chmod +x ./run.sh && ./run.sh validator1"
+    volumes:
+      - ./genesis.json:/genesis.json
 
-  multi-validator2-node:
-    image: odinprotocol/band-validator:initial
+  validator2:
+    container_name: validator2
+    image: odinprotocol/core:latest
     networks:
       bandchain:
         ipv4_address: 172.18.0.12
     command: sh -c "chmod +x ./run.sh && ./run.sh validator2"
+    volumes:
+      - ./genesis.json:/genesis.json
 
-  multi-validator3-node:
-    image: odinprotocol/band-validator:initial
+  validator3:
+    container_name: validator3
+    image: odinprotocol/core:latest
     networks:
       bandchain:
         ipv4_address: 172.18.0.13
     command: sh -c "chmod +x ./run.sh && ./run.sh validator3"
+    volumes:
+      - ./genesis.json:/genesis.json
 
-  multi-validator4-node:
-    image: odinprotocol/band-validator:initial
+  validator4:
+    container_name: validator4
+    image: odinprotocol/core:latest
     networks:
       bandchain:
         ipv4_address: 172.18.0.14
     command: sh -c "chmod +x ./run.sh && ./run.sh validator4"
+    volumes:
+      - ./genesis.json:/genesis.json
 
   query-node:
-    image: odinprotocol/band-validator:initial
+    image: odinprotocol/core:latest
     ports:
       - 26657:26657
     networks:
       bandchain:
         ipv4_address: 172.18.0.15
     command: sh -c "chmod +x ./run.sh && ./run.sh query-node"
+    volumes:
+      - ./genesis.json:/genesis.json
 
   rest-server:
-    image: odinprotocol/band-validator:initial
+    image: odinprotocol/core:latest
     networks:
       bandchain:
         ipv4_address: 172.18.0.20

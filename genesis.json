@@ -19,13 +19,40 @@
   },
   "validators": [
     {
-      "address": "E939B41C50E8ECB00A1AB9280161988DA1B93BDB",
+      "address": "5179b0bb203248e03d2a1342896133b5c58e1e44",
       "pub_key": {
         "type": "tendermint/PubKeySecp256k1",
-        "value": "AodiYz3wdM/UBmeCdst8ZVxhLzuHbGM8ccJF/wNvRDLR"
+        "value": "AnJK4pz+t0lwUdCe39joIjUsTINht1dkdkW3jIzHTOiF"
       },
-      "power": "10",
-      "name": ""
+      "power": "100",
+      "name": "validator2"
+    },
+    {
+      "address": "f23391b5dbf982e37fb7dadea64aae21cae4c172",
+      "pub_key": {
+        "type": "tendermint/PubKeySecp256k1",
+        "value": "A/V/OZek6B2PMh6XEJJ+IsLm0w+22PdJqeSgevs7O3kJ"
+      },
+      "power": "100",
+      "name": "validator1"
+    },
+    {
+      "address": "bdb6a0728c8dfe2124536f16f2ba428fe767a8f9",
+      "pub_key": {
+        "type": "tendermint/PubKeySecp256k1",
+        "value": "A6VP+qhMjy95h4Lei5YqhHhOKISHp0eBOghXJDpg4roz"
+      },
+      "power": "100",
+      "name": "validator3"
+    },
+    {
+      "address": "f0c23921727d869745c4f9703cf33996b1d2b715",
+      "pub_key": {
+        "type": "tendermint/PubKeySecp256k1",
+        "value": "A9A3CPFh0Vg/SeQmCkKysI07oYbXgDojzDrNEvB02ddv"
+      },
+      "power": "100",
+      "name": "validator4"
     }
   ],
   "app_hash": "",
@@ -72,7 +99,64 @@
       },
       "last_total_power": "0",
       "last_validator_powers": null,
-      "validators": null,
+      "validators": [
+        {
+          "description": {
+            "moniker": "validator1"
+          },
+          "commission": {
+            "rate": "0.100000000000000000",
+            "max_rate": "0.200000000000000000",
+            "max_change_rate": "0.010000000000000000"
+          },
+          "min_self_delegation": "1",
+          "operator_address": "bandvaloper1p40yh3zkmhcv0ecqp3mcazy83sa57rgjde6wec",
+          "consensus_pubkey": "bandvalconspub1addwnpepq06h7wvh5n5pmrejr6t3pyn7ytpwd5c0kmv0wjdfujs847em8dusjl96sxg",
+          "tokens": "100000000"
+        },
+        {
+          "description": {
+            "moniker": "validator2"
+          },
+          "commission": {
+            "rate": "0.100000000000000000",
+            "max_rate": "0.200000000000000000",
+            "max_change_rate": "0.010000000000000000"
+          },
+          "min_self_delegation": "1",
+          "operator_address": "bandvaloper1cg26m90y3wk50p9dn8pema8zmaa22plx3ensxr",
+          "consensus_pubkey": "bandvalconspub1addwnpepqfey4c5ul6m5juz36z0dlk8gyg6jcnyrvxm4werkgkmcerx8fn5g2gj9q6w",
+          "tokens": "100000000"
+        },
+        {
+          "description": {
+            "moniker": "validator3"
+          },
+          "commission": {
+            "rate": "0.100000000000000000",
+            "max_rate": "0.200000000000000000",
+            "max_change_rate": "0.010000000000000000"
+          },
+          "min_self_delegation": "1",
+          "operator_address": "bandvaloper1j9vk75jjty02elhwqqjehaspfslaem8pr20qst",
+          "consensus_pubkey": "bandvalconspub1addwnpepqwj5l74gfj8j77v8st0gh932s3uyu2yys7n50qf6pptjgwnqu2arxkkn82m",
+          "tokens": "100000000"
+        },
+        {
+          "description": {
+            "moniker": "validator4"
+          },
+          "commission": {
+            "rate": "0.100000000000000000",
+            "max_rate": "0.200000000000000000",
+            "max_change_rate": "0.010000000000000000"
+          },
+          "min_self_delegation": "1",
+          "operator_address": "bandvaloper1ma0cxd4wpcqk3kz7fr8x609rqmgqgvrpem0txh",
+          "consensus_pubkey": "bandvalconspub1addwnpepq0grwz83v8g4s06fusnq5s4jkzxnhgvx67qr5g7v8tx39ur5m8tk7rg2nxj",
+          "tokens": "100000000"
+        }
+      ],
       "delegations": null,
       "unbonding_delegations": null,
       "redelegations": null,

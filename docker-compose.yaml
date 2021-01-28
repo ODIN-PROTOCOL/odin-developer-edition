@@ -4,11 +4,11 @@ services:
   init1:
     image: odinprotocol/core:latest
     container_name: init1
-    #entrypoint: ["/bin/sh","./init.sh"]
     command: ./init.sh validator1
     volumes:
       - ./init.sh:/init.sh
       - vol1:/root/.bandd
+      - ./genesis.json:/genesis.json
 
   init2:
     image: odinprotocol/core:latest
@@ -19,6 +19,7 @@ services:
     volumes:
       - ./init.sh:/init.sh
       - vol2:/root/.bandd
+      - ./genesis.json:/genesis.json
 
   init3:
     image: odinprotocol/core:latest
@@ -29,6 +30,7 @@ services:
     volumes:
       - ./init.sh:/init.sh
       - vol3:/root/.bandd
+      - ./genesis.json:/genesis.json
 
   init4:
     image: odinprotocol/core:latest
@@ -39,6 +41,7 @@ services:
     volumes:
       - ./init.sh:/init.sh
       - vol4:/root/.bandd
+      - ./genesis.json:/genesis.json
 
   validator1:
     image: odinprotocol/core:latest
@@ -48,8 +51,6 @@ services:
     networks:
       default:
         ipv4_address: 172.18.0.11
-#    entrypoint: bandd start --rpc.laddr tcp://0.0.0.0:26657 \
-#      --p2p.persistent_peers 11392b605378063b1c505c0ab123f04bd710d7d7@172.18.0.11:26656,0851086afcd835d5a6fb0ffbf96fcdf74fec742e@172.18.0.12:26656,63808bd64f2ec19acb2a494c8ce8467c595f6fba@172.18.0.14:26656,7b58b086dd915a79836eb8bfa956aeb9488d13b0@172.18.0.13:26656
     command: bandd start --rpc.laddr tcp://0.0.0.0:26657 --p2p.persistent_peers 11392b605378063b1c505c0ab123f04bd710d7d7@172.18.0.11:26656,0851086afcd835d5a6fb0ffbf96fcdf74fec742e@172.18.0.12:26656,63808bd64f2ec19acb2a494c8ce8467c595f6fba@172.18.0.14:26656,7b58b086dd915a79836eb8bfa956aeb9488d13b0@172.18.0.13:26656
     volumes:
       - vol1:/root/.bandd
@@ -65,7 +66,7 @@ services:
     command: bandd start --rpc.laddr tcp://0.0.0.0:26657 --p2p.persistent_peers 11392b605378063b1c505c0ab123f04bd710d7d7@172.18.0.11:26656,0851086afcd835d5a6fb0ffbf96fcdf74fec742e@172.18.0.12:26656,63808bd64f2ec19acb2a494c8ce8467c595f6fba@172.18.0.14:26656,7b58b086dd915a79836eb8bfa956aeb9488d13b0@172.18.0.13:26656
     volumes:
       - vol2:/root/.bandd
-#
+
   validator3:
     container_name: validator3
     image: odinprotocol/core:latest
@@ -77,7 +78,7 @@ services:
     command: bandd start --rpc.laddr tcp://0.0.0.0:26657 --p2p.persistent_peers 11392b605378063b1c505c0ab123f04bd710d7d7@172.18.0.11:26656,0851086afcd835d5a6fb0ffbf96fcdf74fec742e@172.18.0.12:26656,63808bd64f2ec19acb2a494c8ce8467c595f6fba@172.18.0.14:26656,7b58b086dd915a79836eb8bfa956aeb9488d13b0@172.18.0.13:26656
     volumes:
       - vol3:/root/.bandd
-#
+
   validator4:
     container_name: validator4
     image: odinprotocol/core:latest
@@ -87,19 +88,10 @@ services:
       default:
         ipv4_address: 172.18.0.14
     command: bandd start --rpc.laddr tcp://0.0.0.0:26657 --p2p.persistent_peers 11392b605378063b1c505c0ab123f04bd710d7d7@172.18.0.11:26656,0851086afcd835d5a6fb0ffbf96fcdf74fec742e@172.18.0.12:26656,63808bd64f2ec19acb2a494c8ce8467c595f6fba@172.18.0.14:26656,7b58b086dd915a79836eb8bfa956aeb9488d13b0@172.18.0.13:26656
-    volumes:
-      - vol4:/root/.bandd
-
-  query-node:
-    image: odinprotocol/core:latest
     ports:
       - 26657:26657
-    networks:
-      default:
-        ipv4_address: 172.18.0.15
-    depends_on:
-      - validator4
-    command: sh -c "chmod +x ./run.sh && ./run.sh query-node"
+    volumes:
+      - vol4:/root/.bandd
 
   rest-server:
     image: odinprotocol/core:latest
@@ -111,7 +103,7 @@ services:
       - validator4
     ports:
       - 1317:1317
-    command: bandcli rest-server --laddr tcp://0.0.0.0:1317 --node tcp://172.18.0.15:26657 --chain-id bandchain --trust-node
+    command: bandcli rest-server --laddr tcp://0.0.0.0:1317 --node tcp://172.18.0.14:26657 --chain-id bandchain --trust-node
 
 volumes:
   vol1:

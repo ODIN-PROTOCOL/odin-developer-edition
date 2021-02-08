@@ -59,14 +59,14 @@
   "app_state": {
     "mint": {
       "minter": {
-        "inflation": "0.130000000000000000",
+        "inflation": "0.120000000000000000",
         "annual_provisions": "0.000000000000000000"
       },
       "params": {
-        "mint_denom": "uband",
-        "inflation_rate_change": "0.130000000000000000",
-        "inflation_max": "0.200000000000000000",
-        "inflation_min": "0.070000000000000000",
+        "mint_denom": "odin",
+        "inflation_rate_change": "0.000000000000000000",
+        "inflation_max": "0.000000000000000000",
+        "inflation_min": "0.000000000000000000",
         "goal_bonded": "0.670000000000000000",
         "blocks_per_year": "10519200"
       }
@@ -95,7 +95,7 @@
         "max_validators": 100,
         "max_entries": 7,
         "historical_entries": 1000,
-        "bond_denom": "uband"
+        "bond_denom": "odin"
       },
       "last_total_power": "0",
       "last_validator_powers": null,
@@ -168,7 +168,7 @@
     "genutil": {},
     "crisis": {
       "constant_fee": {
-        "denom": "uband",
+        "denom": "odin",
         "amount": "10000000000"
       }
     },
@@ -180,7 +180,7 @@
       "deposit_params": {
         "min_deposit": [
           {
-            "denom": "uband",
+            "denom": "odin",
             "amount": "1000000000"
           }
         ],
@@ -227,8 +227,12 @@
             "address": "band1k9av7fcjzfc8j30f5ke3jnnzs7hgngpwr3g3r4",
             "coins": [
               {
-                "denom": "uband",
-                "amount": "10000000000000"
+                "denom": "odin",
+                "amount": "0"
+              },
+              {
+                "denom": "geo",
+                "amount": "250000000"
               }
             ],
             "public_key": null,
@@ -242,8 +246,12 @@
             "address": "band1p40yh3zkmhcv0ecqp3mcazy83sa57rgjp07dun",
             "coins": [
               {
-                "denom": "uband",
-                "amount": "10000000000000"
+                "denom": "odin",
+                "amount": "0"
+              },
+              {
+                "denom": "geo",
+                "amount": "250000000"
               }
             ],
             "public_key": null,
@@ -257,8 +265,12 @@
             "address": "band1cg26m90y3wk50p9dn8pema8zmaa22plxa0hnrg",
             "coins": [
               {
-                "denom": "uband",
-                "amount": "10000000000000"
+                "denom": "odin",
+                "amount": "0"
+              },
+              {
+                "denom": "geo",
+                "amount": "250000000"
               }
             ],
             "public_key": null,
@@ -272,8 +284,12 @@
             "address": "band1j9vk75jjty02elhwqqjehaspfslaem8p0utr4q",
             "coins": [
               {
-                "denom": "uband",
-                "amount": "10000000000000"
+                "denom": "odin",
+                "amount": "0"
+              },
+              {
+                "denom": "geo",
+                "amount": "250000000"
               }
             ],
             "public_key": null,
@@ -287,8 +303,12 @@
             "address": "band1ma0cxd4wpcqk3kz7fr8x609rqmgqgvrp4dtgru",
             "coins": [
               {
-                "denom": "uband",
-                "amount": "10000000000000"
+                "denom": "odin",
+                "amount": "0"
+              },
+              {
+                "denom": "geo",
+                "amount": "0"
               }
             ],
             "public_key": null,
@@ -302,8 +322,12 @@
             "address": "band1m5lq9u533qaya4q3nfyl6ulzqkpkhge9q8tpzs",
             "coins": [
               {
-                "denom": "uband",
-                "amount": "100000000000000"
+                "denom": "odin",
+                "amount": "0"
+              },
+              {
+                "denom": "geo",
+                "amount": "0"
               }
             ],
             "public_key": null,

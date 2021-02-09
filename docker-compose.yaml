@@ -105,6 +105,18 @@ services:
       - 1317:1317
     command: bandcli rest-server --laddr tcp://0.0.0.0:1317 --node tcp://172.18.0.14:26657 --chain-id bandchain --trust-node
 
+  geo-provider:
+    image: odinprotocol/geo-provider:latest
+    networks:
+      default:
+        ipv4_address: 172.18.0.21
+    restart: always
+    volumes:
+      - ./data:/go/app/data
+    ports:
+      - 5000:80
+    command: geo-provider
+
 volumes:
   vol1:
   vol2:

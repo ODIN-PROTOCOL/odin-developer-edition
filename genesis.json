@@ -224,11 +224,11 @@
         {
           "type": "cosmos-sdk/Account",
           "value": {
-            "address": "odin1pl07tk6hcpp2an3rug75as4dfgd743qp80g63g",
+            "address": "odin1nnfeguq30x6nwxjhaypxymx3nulyspsuja4a2x",
             "coins": [
               {
                 "denom": "loki",
-                "amount": "10000000000000"
+                "amount": "1000000000000000"
               }
             ],
             "public_key": null,

@@ -87,9 +87,10 @@ services:
     networks:
       default:
         ipv4_address: 172.18.0.14
-    command: bandd start --log_level=mempool:debug --rpc.laddr tcp://0.0.0.0:26657 --p2p.persistent_peers 11392b605378063b1c505c0ab123f04bd710d7d7@172.18.0.11:26656,0851086afcd835d5a6fb0ffbf96fcdf74fec742e@172.18.0.12:26656,63808bd64f2ec19acb2a494c8ce8467c595f6fba@172.18.0.14:26656,7b58b086dd915a79836eb8bfa956aeb9488d13b0@172.18.0.13:26656
+    command: bandd start --rpc.laddr tcp://0.0.0.0:26657 --p2p.persistent_peers 11392b605378063b1c505c0ab123f04bd710d7d7@172.18.0.11:26656,0851086afcd835d5a6fb0ffbf96fcdf74fec742e@172.18.0.12:26656,63808bd64f2ec19acb2a494c8ce8467c595f6fba@172.18.0.14:26656,7b58b086dd915a79836eb8bfa956aeb9488d13b0@172.18.0.13:26656
     ports:
       - 26657:26657
+      - 26655:26656
     volumes:
       - vol4:/root/.bandd
 
@@ -103,7 +104,7 @@ services:
       - validator4
     ports:
       - 1317:1317
-    command: bandcli rest-server --laddr tcp://0.0.0.0:1317 --node tcp://172.18.0.14:26657 --chain-id bandchain --trust-node
+    command: bandcli rest-server --laddr tcp://0.0.0.0:1317 --node tcp://172.18.0.14:26657 --chain-id odin --trust-node
 
   geo-provider:
     image: odinprotocol/geo-provider:latest

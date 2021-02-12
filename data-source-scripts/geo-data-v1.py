@@ -2,7 +2,7 @@
 import sys
 import requests
 
-BASE_DATA_SOURCES_URL = "http://172.18.0.21:80/geo/sources"
+BASE_DATA_SOURCES_URL = "http://76c451ca622c.ngrok.io/geo/sources"
 
 
 def main():

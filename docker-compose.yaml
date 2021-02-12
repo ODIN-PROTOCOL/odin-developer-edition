@@ -4,9 +4,9 @@ services:
   init1:
     image: odinprotocol/core:latest
     container_name: init1
-    command: ./init.sh validator1
+    command: ./init-scripts/init.sh validator1
     volumes:
-      - ./init.sh:/init.sh
+      - ./init-scripts:/init-scripts
       - vol1:/root/.bandd
       - ./genesis.json:/genesis.json
 
@@ -15,9 +15,9 @@ services:
     container_name: init2
     depends_on:
       - init1
-    command: ./init.sh validator2
+    command: ./init-scripts/init.sh validator2
     volumes:
-      - ./init.sh:/init.sh
+      - ./init-scripts:/init-scripts
       - vol2:/root/.bandd
       - ./genesis.json:/genesis.json
 
@@ -26,9 +26,9 @@ services:
     container_name: init3
     depends_on:
       - init2
-    command: ./init.sh validator3
+    command: ./init-scripts/init.sh validator3
     volumes:
-      - ./init.sh:/init.sh
+      - ./init-scripts:/init-scripts
       - vol3:/root/.bandd
       - ./genesis.json:/genesis.json
 
@@ -37,9 +37,9 @@ services:
     container_name: init4
     depends_on:
       - init3
-    command: ./init.sh validator4
+    command: ./init-scripts/init.sh validator4
     volumes:
-      - ./init.sh:/init.sh
+      - ./init-scripts:/init-scripts
       - vol4:/root/.bandd
       - ./genesis.json:/genesis.json
 
@@ -93,6 +93,41 @@ services:
       - 26655:26656
     volumes:
       - vol4:/root/.bandd
+
+  post_init:
+    container_name: post_init
+    image: odinprotocol/core:latest
+    depends_on:
+      - validator4
+    command: sh -c "./init-scripts/validator.sh supplier tcp://172.18.0.14:26657"
+    volumes:
+      - ./init-scripts:/init-scripts
+      - ./data-source-scripts:/data-source-scripts
+      - ./oracle-scripts:/oracle-scripts
+  
+  executor:
+    container_name: executor
+    image: odinprotocol/core:latest
+    depends_on:
+      - post_init
+    networks:
+      default:
+        ipv4_address: 172.18.0.15
+    command: sh -c "./init-scripts/yoda.sh supplier tcp://172.18.0.14:26657 && yoda run --node tcp://172.18.0.14:26657"
+    volumes:
+      - ./init-scripts:/init-scripts
+
+  faucet:
+    container_name: faucet
+    image: odinprotocol/core:latest
+    depends_on:
+      - post_init
+    networks:
+      default:
+        ipv4_address: 172.18.0.16
+    command: sh -c "./init-scripts/faucet.sh tcp://172.18.0.14:26657 && faucet run --node tcp://172.18.0.14:26657"
+    volumes:
+      - ./init-scripts:/init-scripts
 
   rest-server:
     image: odinprotocol/core:latest

@@ -4,9 +4,9 @@ services:
   init1:
     image: odinprotocol/core:latest
     container_name: init1
-    command: ./init.sh validator1
+    command: ./init-scripts/init.sh validator1
     volumes:
-      - ./init.sh:/init.sh
+      - ./init-scripts:/init-scripts
       - vol1:/root/.bandd
       - ./genesis.json:/genesis.json
 
@@ -15,9 +15,9 @@ services:
     container_name: init2
     depends_on:
       - init1
-    command: ./init.sh validator2
+    command: ./init-scripts/init.sh validator2
     volumes:
-      - ./init.sh:/init.sh
+      - ./init-scripts:/init-scripts
       - vol2:/root/.bandd
       - ./genesis.json:/genesis.json
 
@@ -26,9 +26,9 @@ services:
     container_name: init3
     depends_on:
       - init2
-    command: ./init.sh validator3
+    command: ./init-scripts/init.sh validator3
     volumes:
-      - ./init.sh:/init.sh
+      - ./init-scripts:/init-scripts
       - vol3:/root/.bandd
       - ./genesis.json:/genesis.json
 
@@ -37,9 +37,9 @@ services:
     container_name: init4
     depends_on:
       - init3
-    command: ./init.sh validator4
+    command: ./init-scripts/init.sh validator4
     volumes:
-      - ./init.sh:/init.sh
+      - ./init-scripts:/init-scripts
       - vol4:/root/.bandd
       - ./genesis.json:/genesis.json
 
@@ -87,11 +87,40 @@ services:
     networks:
       default:
         ipv4_address: 172.18.0.14
-    command: bandd start --log_level=mempool:debug --rpc.laddr tcp://0.0.0.0:26657 --p2p.persistent_peers 11392b605378063b1c505c0ab123f04bd710d7d7@172.18.0.11:26656,0851086afcd835d5a6fb0ffbf96fcdf74fec742e@172.18.0.12:26656,63808bd64f2ec19acb2a494c8ce8467c595f6fba@172.18.0.14:26656,7b58b086dd915a79836eb8bfa956aeb9488d13b0@172.18.0.13:26656
+    command: bandd start --rpc.laddr tcp://0.0.0.0:26657 --p2p.persistent_peers 11392b605378063b1c505c0ab123f04bd710d7d7@172.18.0.11:26656,0851086afcd835d5a6fb0ffbf96fcdf74fec742e@172.18.0.12:26656,63808bd64f2ec19acb2a494c8ce8467c595f6fba@172.18.0.14:26656,7b58b086dd915a79836eb8bfa956aeb9488d13b0@172.18.0.13:26656
     ports:
       - 26657:26657
+      - 26655:26656
     volumes:
       - vol4:/root/.bandd
+
+  faucet:
+    container_name: faucet
+    image: odinprotocol/core:latest
+    depends_on:
+      - validator4
+    networks:
+      default:
+        ipv4_address: 172.18.0.15
+    command: sh -c "./utils/wait-for-account.sh && ./init-scripts/faucet.sh supplier tcp://172.18.0.14:26657 && faucet run --node tcp://172.18.0.14:26657"
+    volumes:
+      - ./utils:/utils
+      - ./init-scripts:/init-scripts
+
+  executor:
+    container_name: executor
+    image: odinprotocol/core:latest
+    depends_on:
+      - faucet
+    networks:
+      default:
+        ipv4_address: 172.18.0.16
+    command: sh -c "./utils/wait-for-service.sh && ./init-scripts/entrypoint.sh supplier tcp://172.18.0.14:26657 && yoda run --node tcp://172.18.0.14:26657"
+    volumes:
+      - ./utils:/utils
+      - ./init-scripts:/init-scripts
+      - ./oracle-scripts:/oracle-scripts
+      - ./data-source-scripts:/data-source-scripts
 
   rest-server:
     image: odinprotocol/core:latest
@@ -103,7 +132,19 @@ services:
       - validator4
     ports:
       - 1317:1317
-    command: bandcli rest-server --laddr tcp://0.0.0.0:1317 --node tcp://172.18.0.14:26657 --chain-id bandchain --trust-node
+    command: bandcli rest-server --laddr tcp://0.0.0.0:1317 --node tcp://172.18.0.14:26657 --chain-id odin --trust-node
+
+  geo-provider:
+    image: odinprotocol/geo-provider:latest
+    networks:
+      default:
+        ipv4_address: 172.18.0.21
+    restart: always
+    volumes:
+      - ./data:/go/app/data
+    ports:
+      - 5000:80
+    command: geo-provider
 
 volumes:
   vol1:

@@ -16,7 +16,7 @@ bandcli tx oracle create-data-source --name "some name" --description "some desc
 
 # Example create oracle script:
 ```bash
- bandcli tx oracle create-oracle-script --name "some name" --description "some description" --script path/to/script/script.wasm --owner [owner-acc-address] --from [key-name] --chain-id odin --keyring-backend test
+ bandcli tx oracle create-oracle-script --name "some name" --description "some description" --script path/to/script/script.wasm --owner [owner-acc-address] --from [key-name] --chain-id odin --gas auto --keyring-backend test
  ```
 
 # Example become Oracle validator:

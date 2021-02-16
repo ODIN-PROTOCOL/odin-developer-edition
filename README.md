@@ -26,7 +26,7 @@ bandcli tx oracle activate --from [key-name] --chain-id odin --keyring-backend t
 
 # Example become system validator:
 ```bash
-bandcli tx staking create-validator --amount 100000000loki --commission-max-change-rate 0.010000000000000000 --commission-max-rate 0.200000000000000000 --commission-rate 0.100000000000000000 --chain-id odin --from supplier --moniker oracle-validator --pubkey odinvalconspub1addwnpepqge86lvslkpfk0rlz0ah9tat0vntx8yele36hhfpflehfehydlutkvdvhfm --min-self-delegation 1 --keyring-backend test
+bandcli tx staking create-validator --amount 100000000loki --commission-max-change-rate 0.010000000000000000 --commission-max-rate 0.200000000000000000 --commission-rate 0.100000000000000000 --chain-id odin --from [key-name] --moniker "some moniker" --pubkey [validator-cons-pub-key] --min-self-delegation 1 --keyring-backend test
 ```
 
  # Example request create:
@@ -40,16 +40,16 @@ OBI Encoded calldata example:
 
 # Example configuring reporters:
 ```bash
-bandcli tx multi-send 1000000loki $(yoda keys list -a) --from supplier --keyring-backend test --chain-id odin
-bandcli tx oracle add-reporters $(yoda keys list -a) --from supplier --keyring-backend test --chain-id odin
+bandcli tx multi-send 1000000loki $(yoda keys list -a) --from [key-name] --keyring-backend test --chain-id odin
+bandcli tx oracle add-reporters $(yoda keys list -a) --from [key-name] --keyring-backend test --chain-id odin
 ```
 
 # Example edit data source:
 ```bash
-bandcli tx oracle edit-data-source 1 --script /home/stepan/Projects/band/GeoDB-Limited/odin-developer-edition/data-source-scripts/geo-data-v1.py --owner odin1nnfeguq30x6nwxjhaypxymx3nulyspsuja4a2x --from supplier --chain-id odin --keyring-backend test
+bandcli tx oracle edit-data-source [data-source-id:uint] --script /path/to/script.py --owner [owner-acc-address] --from [key-name] --chain-id odin --keyring-backend test
 ```
 
 # Example query report:
 ```bash
-bandcli query oracle request 2 --chain-id odin --output json --indent
+bandcli query oracle request [request-id:uint] --chain-id odin --output json --indent
 ```

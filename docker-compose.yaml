@@ -94,40 +94,33 @@ services:
     volumes:
       - vol4:/root/.bandd
 
-  post_init:
-    container_name: post_init
-    image: odinprotocol/core:latest
-    depends_on:
-      - validator4
-    command: sh -c "./init-scripts/validator.sh supplier tcp://172.18.0.14:26657"
-    volumes:
-      - ./init-scripts:/init-scripts
-      - ./data-source-scripts:/data-source-scripts
-      - ./oracle-scripts:/oracle-scripts
-  
-  executor:
-    container_name: executor
-    image: odinprotocol/core:latest
-    depends_on:
-      - post_init
-    networks:
-      default:
-        ipv4_address: 172.18.0.15
-    command: sh -c "./init-scripts/yoda.sh supplier tcp://172.18.0.14:26657 && yoda run --node tcp://172.18.0.14:26657"
-    volumes:
-      - ./init-scripts:/init-scripts
-
   faucet:
     container_name: faucet
     image: odinprotocol/core:latest
     depends_on:
-      - post_init
+      - validator4
+    networks:
+      default:
+        ipv4_address: 172.18.0.15
+    command: sh -c "./utils/wait-for-account.sh && ./init-scripts/faucet.sh supplier tcp://172.18.0.14:26657 && faucet run --node tcp://172.18.0.14:26657"
+    volumes:
+      - ./utils:/utils
+      - ./init-scripts:/init-scripts
+
+  executor:
+    container_name: executor
+    image: odinprotocol/core:latest
+    depends_on:
+      - faucet
     networks:
       default:
         ipv4_address: 172.18.0.16
-    command: sh -c "./init-scripts/faucet.sh tcp://172.18.0.14:26657 && faucet run --node tcp://172.18.0.14:26657"
+    command: sh -c "./utils/wait-for-service.sh && ./init-scripts/entrypoint.sh supplier tcp://172.18.0.14:26657 && yoda run --node tcp://172.18.0.14:26657"
     volumes:
+      - ./utils:/utils
       - ./init-scripts:/init-scripts
+      - ./oracle-scripts:/oracle-scripts
+      - ./data-source-scripts:/data-source-scripts
 
   rest-server:
     image: odinprotocol/core:latest

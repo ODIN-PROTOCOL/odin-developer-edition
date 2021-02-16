@@ -2,12 +2,6 @@
 
 rm -rf ~/.yoda
 
-bandcli config node $2
-bandcli config chain-id odin
-
-echo "usage ketchup faculty bench jewel rocket latin absurd decide field party reunion cook entry scout scene miss box memory museum decorate guide few verify" \
-    | bandcli keys add $1 --recover --keyring-backend test
-
 # config chain id
 yoda config chain-id odin
 
@@ -26,10 +20,7 @@ yoda config rpc-poll-interval "1s"
 # setup max-try to yoda config
 yoda config max-try 5
 
-echo "y" | bandcli tx oracle activate --from $1 --keyring-backend test
-
-# wait for activation transaction success
-sleep 5
+echo "y" | bandcli tx oracle activate --from odin1nnfeguq30x6nwxjhaypxymx3nulyspsuja4a2x --chain-id odin --broadcast-mode block --keyring-backend test
 
 for i in $(eval echo {1..$2})
 do
@@ -38,15 +29,9 @@ do
 done
 
 # send band tokens to reporters
-echo "y" | bandcli tx multi-send 1000000loki $(yoda keys list -a) --from $1 --keyring-backend test
-
-# wait for sending band tokens transaction success
-sleep 5
+echo "y" | bandcli tx multi-send 1000000loki $(yoda keys list -a) --from $1 --broadcast-mode block --keyring-backend test
 
 # add reporter to bandchain
-echo "y" | bandcli tx oracle add-reporters $(yoda keys list -a) --from $1 --keyring-backend test
-
-# wait for addding reporter transaction success
-sleep 5
+echo "y" | bandcli tx oracle add-reporters $(yoda keys list -a) --from $1 --broadcast-mode block --keyring-backend test
 
 echo "Yoda configured"

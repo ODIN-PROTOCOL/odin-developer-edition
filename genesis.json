@@ -60,7 +60,7 @@
     "mint": {
       "minter": {
         "inflation": "0.120000000000000000",
-        "annual_provisions": "0.120000000000000000"
+        "annual_provisions": "0.000000000000000000"
       },
       "params": {
         "mint_denom": "loki",
@@ -74,16 +74,7 @@
     },
     "upgrade": {},
     "supply": {
-      "supply": [
-        {
-          "denom": "loki",
-          "amount": "100000000000000"
-        },
-        {
-          "denom": "geo",
-          "amount": "1000000000000000"
-        }
-      ]
+      "supply": []
     },
     "oracle": {
       "params": {
@@ -249,6 +240,21 @@
         {
           "type": "cosmos-sdk/Account",
           "value": {
+            "address": "odin1pl07tk6hcpp2an3rug75as4dfgd743qp80g63g",
+            "coins": [
+              {
+                "denom": "loki",
+                "amount": "10000000000000"
+              }
+            ],
+            "public_key": null,
+            "account_number": "0",
+            "sequence": "0"
+          }
+        },
+        {
+          "type": "cosmos-sdk/Account",
+          "value": {
             "address": "odin17geerdwmlxpwxlahmt02vj4wy89wfstj2ufxqq",
             "coins": [
               {
@@ -319,7 +325,7 @@
         "community_pool": [
           {
             "denom": "loki",
-            "amount": "89992000000000"
+            "amount": "79992000000000"
           },
           {
             "denom": "geo",

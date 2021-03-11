@@ -85,7 +85,11 @@
         "per_validator_request_gas": "30000",
         "sampling_try_count": "3",
         "oracle_reward_percentage": "70",
-        "inactive_penalty_duration": "600000000000"
+        "inactive_penalty_duration": "600000000000",
+        "data_provider_reward_per_byte": {
+          "denom": "geo",
+          "amount": "1.000000000000000000"
+        }
       },
       "data_sources": [],
       "oracle_scripts": [],
@@ -340,12 +344,12 @@
       "fee_pool": {
         "community_pool": [
           {
-            "denom": "loki",
-            "amount": "49992000000000"
-          },
-          {
             "denom": "geo",
             "amount": "999999998000000"
+          },
+          {
+            "denom": "loki",
+            "amount": "49992000000000"
           }
         ]
       },

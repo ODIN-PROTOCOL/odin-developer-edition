@@ -85,10 +85,22 @@
         "per_validator_request_gas": "30000",
         "sampling_try_count": "3",
         "oracle_reward_percentage": "70",
-        "inactive_penalty_duration": "600000000000"
+        "inactive_penalty_duration": "600000000000",
+        "data_provider_reward_per_byte": {
+          "denom": "geo",
+          "amount": "1.000000000000000000"
+        }
       },
       "data_sources": [],
-      "oracle_scripts": []
+      "oracle_scripts": [],
+      "oracle_pool": {
+        "data_providers_pool": [
+          {
+            "denom": "loki",
+            "amount": "30000000000000"
+          }
+        ]
+      }
     },
     "staking": {
       "params": {
@@ -228,6 +240,10 @@
             "address": "odin1nnfeguq30x6nwxjhaypxymx3nulyspsuja4a2x",
             "coins": [
               {
+                "denom": "geo",
+                "amount": "1000000"
+              },
+              {
                 "denom": "loki",
                 "amount": "10000000000000"
               }
@@ -242,6 +258,10 @@
           "value": {
             "address": "odin1pl07tk6hcpp2an3rug75as4dfgd743qp80g63g",
             "coins": [
+              {
+                "denom": "geo",
+                "amount": "1000000"
+              },
               {
                 "denom": "loki",
                 "amount": "10000000000000"
@@ -324,12 +344,12 @@
       "fee_pool": {
         "community_pool": [
           {
-            "denom": "loki",
-            "amount": "79992000000000"
+            "denom": "geo",
+            "amount": "999999998000000"
           },
           {
-            "denom": "geo",
-            "amount": "1000000000000000"
+            "denom": "loki",
+            "amount": "49992000000000"
           }
         ]
       },
@@ -341,6 +361,17 @@
       "validator_current_rewards": [],
       "delegator_starting_infos": [],
       "validator_slash_events": []
+    },
+    "coinswap": {
+      "initial_rate": "10.000000000000000000",
+      "params": {
+        "rate_multiplier": "1.000000000000000000",
+        "valid_exchanges": {
+          "geo": [
+            "loki"
+          ]
+        }
+      }
     }
   }
 }

@@ -69,7 +69,24 @@
         "inflation_min": "0.120000000000000000",
         "goal_bonded": "0.670000000000000000",
         "blocks_per_year": "10519200",
-        "mint_air": false
+        "mint_air": false,
+        "max_withdrawal_per_time": [
+          {
+            "denom": "loki",
+            "amount": "100"
+          }
+        ]
+      },
+      "mint_pool": {
+        "treasury_pool": [
+          {
+            "denom": "loki",
+            "amount": "30000000000000"
+          }
+        ],
+        "eligible_accounts_pool": [
+          "odin1pl07tk6hcpp2an3rug75as4dfgd743qp80g63g"
+        ]
       }
     },
     "upgrade": {},

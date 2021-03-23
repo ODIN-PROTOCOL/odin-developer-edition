@@ -2,11 +2,13 @@
 import sys
 import requests
 
-BASE_DATA_SOURCES_URL = "http://35.195.150.105:5000/geo/data/devices"
+BASE_DATA_SOURCES_URL = "http://35.195.150.105:5000/geo/data/{}/devices"
 
 
 def main(uuids):
-    devices = requests.request("GET", BASE_DATA_SOURCES_URL).json()['message']
+    owner = uuids[0]
+    uuids = uuids[1:]
+    devices = requests.request("GET", BASE_DATA_SOURCES_URL.format(owner)).json()['message']
     models = []
     for device in devices:
         if device['uuid'] in uuids:

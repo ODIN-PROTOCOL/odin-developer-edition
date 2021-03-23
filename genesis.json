@@ -63,6 +63,7 @@
         "annual_provisions": "0.000000000000000000"
       },
       "params": {
+        "eth_integration_address": "0xa19Df1199CeEfd7831576f1D055E454364337633",
         "mint_denom": "loki",
         "inflation_rate_change": "0.000000000000000000",
         "inflation_max": "0.120000000000000000",
@@ -73,7 +74,7 @@
         "max_withdrawal_per_time": [
           {
             "denom": "loki",
-            "amount": "100"
+            "amount": "1000"
           }
         ]
       },
@@ -103,9 +104,15 @@
         "sampling_try_count": "3",
         "oracle_reward_percentage": "70",
         "inactive_penalty_duration": "600000000000",
+        "max_data_size": "1024",
+        "max_calldata_size": "1024",
         "data_provider_reward_per_byte": {
           "denom": "geo",
           "amount": "1.000000000000000000"
+        },
+        "data_requester_basic_fee": {
+          "denom": "loki",
+          "amount": "100"
         }
       },
       "data_sources": [],
@@ -366,7 +373,7 @@
           },
           {
             "denom": "loki",
-            "amount": "49992000000000"
+            "amount": "19992000000000"
           }
         ]
       },

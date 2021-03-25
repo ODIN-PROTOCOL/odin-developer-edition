@@ -9,7 +9,12 @@ def main(models):
     owner = models[0]
     models = models[1:]
     models = list(map(lambda x: x.lower(), models))
-    devices = requests.request("GET", BASE_DATA_SOURCES_URL.format(owner)).json()['message']
+    resp = requests.request("GET", BASE_DATA_SOURCES_URL.format(owner))
+    if resp.status_code == 403:
+        return resp.json()['message']
+    elif resp.status_code >= 300 or resp.status_code < 200:
+        return 'something bad happened'
+    devices = resp.json()['message']
     counts = [0] * len(models)
     for device in devices:
         model = device['model'].lower()

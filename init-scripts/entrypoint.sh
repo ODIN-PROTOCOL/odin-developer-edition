@@ -3,6 +3,7 @@
 echo "usage ketchup faculty bench jewel rocket latin absurd decide field party reunion cook entry scout scene miss box memory museum decorate guide few verify" \
     | bandd keys add $1 --recover --keyring-backend test
 
+echo "y" | bandd tx oracle activate --from $1 --chain-id odin --keyring-backend test --node $2 --broadcast-mode block
 
 # Create system validator
 echo "y" | bandd tx staking create-validator \
@@ -25,7 +26,7 @@ echo "y" | bandd tx oracle create-data-source \
   --description "mock data source with 'Hello, World!'" \
   --script /data-source-scripts/mock.py \
   --treasury odin1nnfeguq30x6nwxjhaypxymx3nulyspsuja4a2x \
-  --fee 10odin \
+  --fee 0loki \
   --owner odin1nnfeguq30x6nwxjhaypxymx3nulyspsuja4a2x \
   --from $1 \
   --gas auto \

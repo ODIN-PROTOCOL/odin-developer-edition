@@ -25,7 +25,6 @@ echo "y" | bandd tx oracle create-data-source \
   --name "mock data source" \
   --description "mock data source with 'Hello, World!'" \
   --script /data-source-scripts/mock.py \
-  --treasury odin1nnfeguq30x6nwxjhaypxymx3nulyspsuja4a2x \
   --fee 0loki \
   --owner odin1nnfeguq30x6nwxjhaypxymx3nulyspsuja4a2x \
   --from $1 \

@@ -106,6 +106,8 @@ services:
       default:
         ipv4_address: 172.18.0.15
     command: sh -c "/utils/wait-for-account.sh && /init-scripts/faucet.sh supplier tcp://172.18.0.14:26657 && faucet run --node tcp://172.18.0.14:26657"
+    ports:
+      - 5005:5005
     volumes:
       - ./utils:/utils
       - ./init-scripts:/init-scripts
@@ -136,6 +138,14 @@ services:
     ports:
       - 5000:80
     command: geo-provider
+
+  odin-deposit-ether:
+    image: odinprotocol/odin-deposit-ether:latest
+    networks:
+      default:
+        ipv4_address: 172.18.0.22
+    restart: always
+    command: odin-deposit-ether-svc run deposit
 
 volumes:
   vol1:

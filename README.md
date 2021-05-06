@@ -7,7 +7,7 @@ docker-compose logs -f
 
 #### Notes
 
-* 1 Odin token equals 10^6 loki
+* 1 Odin token equals 10^6 odin
 
 # Example create data source:
 ```bash
@@ -26,7 +26,7 @@ bandd tx oracle activate --from [key-name] --chain-id odin --keyring-backend tes
 
 # Example become system validator:
 ```bash
-bandd tx staking create-validator --amount 100000000loki --commission-max-change-rate 0.010000000000000000 --commission-max-rate 0.200000000000000000 --commission-rate 0.100000000000000000 --chain-id odin --from [key-name] --moniker "some moniker" --pubkey [validator-cons-pub-key] --min-self-delegation 1 --keyring-backend test
+bandd tx staking create-validator --amount 100000000odin --commission-max-change-rate 0.010000000000000000 --commission-max-rate 0.200000000000000000 --commission-rate 0.100000000000000000 --chain-id odin --from [key-name] --moniker "some moniker" --pubkey [validator-cons-pub-key] --min-self-delegation 1 --keyring-backend test
 ```
 
  # Example request create:
@@ -41,7 +41,7 @@ OBI Encoded calldata example:
 # Example configuring reporters:
 ```bash 
 # !!!deprecated!!! (use for loop with bank send)
-bandd tx multi-send 1000000loki $(yoda keys list -a) --from [key-name] --keyring-backend test --chain-id odin
+bandd tx multi-send 1000000odin $(yoda keys list -a) --from [key-name] --keyring-backend test --chain-id odin
 bandd tx oracle add-reporters $(yoda keys list -a) --from [key-name] --keyring-backend test --chain-id odin
 ```
 

@@ -9,4 +9,4 @@ faucet config chain-id odin
 
 faucet config port 5005
 
-faucet config coins geo loki
+faucet config coins geo odin

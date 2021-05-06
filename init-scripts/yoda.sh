@@ -27,7 +27,7 @@ yoda keys add reporter
 # send band tokens to reporters
 for rec in $(yoda keys list -a)
 do
-  echo "y" | bandd tx bank send $1 $rec 1000000loki --broadcast-mode block --keyring-backend test --chain-id odin --node $2
+  echo "y" | bandd tx bank send $1 $rec 1000000odin --broadcast-mode block --keyring-backend test --chain-id odin --node $2
 done
 
 # add reporter to bandchain

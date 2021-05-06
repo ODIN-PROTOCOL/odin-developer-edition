@@ -7,7 +7,7 @@ echo "y" | bandd tx oracle activate --from $1 --chain-id odin --keyring-backend 
 
 # Create system validator
 echo "y" | bandd tx staking create-validator \
-  --amount 100000000loki \
+  --amount 100000000odin \
   --commission-max-change-rate 0.010000000000000000 \
   --commission-max-rate 0.200000000000000000 \
   --commission-rate 0.100000000000000000 \
@@ -25,7 +25,7 @@ echo "y" | bandd tx oracle create-data-source \
   --name "mock data source" \
   --description "mock data source with 'Hello, World!'" \
   --script /data-source-scripts/mock.py \
-  --fee 0loki \
+  --fee 0odin \
   --owner odin1nnfeguq30x6nwxjhaypxymx3nulyspsuja4a2x \
   --from $1 \
   --gas auto \

@@ -9,4 +9,8 @@ faucet config chain-id odin
 
 faucet config port 5005
 
-faucet config coins geo odin
+faucet config period 12h
+
+faucet config coins 10geo,10odin
+
+faucet config max-per-period-withdrawal 10geo,10odin

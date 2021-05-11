@@ -127,23 +127,11 @@ services:
       - ./oracle-scripts:/oracle-scripts
       - ./data-source-scripts:/data-source-scripts
 
-  geo-provider:
-    image: odinprotocol/geo-provider:latest
-    networks:
-      default:
-        ipv4_address: 172.18.0.21
-    restart: always
-    volumes:
-      - ./data:/go/core/data
-    ports:
-      - 5000:80
-    command: geo-provider
-
   odin-deposit-ether:
     image: odinprotocol/odin-deposit-ether:latest
     networks:
       default:
-        ipv4_address: 172.18.0.22
+        ipv4_address: 172.18.0.21
     restart: always
     command: odin-deposit-ether-svc run deposit
 

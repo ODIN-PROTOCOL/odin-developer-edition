@@ -11,6 +11,6 @@ faucet config port 5005
 
 faucet config period 12h
 
-faucet config coins 10geo,10odin
+faucet config coins 10minigeo,10loki
 
-faucet config max-per-period-withdrawal 10geo,10odin
+faucet config max-per-period-withdrawal 10minigeo,10loki

@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
   init1:
-    image: odinprotocol/core:latest
+    image: odinprotocol/core:master
     container_name: init1
     command: /init-scripts/init.sh validator1
     volumes:
@@ -11,7 +11,7 @@ services:
       - ./genesis.json:/genesis.json
 
   init2:
-    image: odinprotocol/core:latest
+    image: odinprotocol/core:master
     container_name: init2
     depends_on:
       - init1
@@ -22,7 +22,7 @@ services:
       - ./genesis.json:/genesis.json
 
   init3:
-    image: odinprotocol/core:latest
+    image: odinprotocol/core:master
     container_name: init3
     depends_on:
       - init2
@@ -33,7 +33,7 @@ services:
       - ./genesis.json:/genesis.json
 
   init4:
-    image: odinprotocol/core:latest
+    image: odinprotocol/core:master
     container_name: init4
     depends_on:
       - init3
@@ -44,7 +44,7 @@ services:
       - ./genesis.json:/genesis.json
 
   validator1:
-    image: odinprotocol/core:latest
+    image: odinprotocol/core:master
     container_name: validator1
     depends_on:
       - init4
@@ -57,7 +57,7 @@ services:
 
   validator2:
     container_name: validator2
-    image: odinprotocol/core:latest
+    image: odinprotocol/core:master
     depends_on:
       - validator1
     networks:
@@ -69,7 +69,7 @@ services:
 
   validator3:
     container_name: validator3
-    image: odinprotocol/core:latest
+    image: odinprotocol/core:master
     depends_on:
       - validator2
     networks:
@@ -81,7 +81,7 @@ services:
 
   validator4:
     container_name: validator4
-    image: odinprotocol/core:latest
+    image: odinprotocol/core:master
     depends_on:
       - validator3
     networks:
@@ -99,7 +99,7 @@ services:
 
   faucet:
     container_name: faucet
-    image: odinprotocol/core:latest
+    image: odinprotocol/core:master
     depends_on:
       - validator4
     networks:
@@ -114,7 +114,7 @@ services:
 
   executor:
     container_name: executor
-    image: odinprotocol/core:latest
+    image: odinprotocol/core:master
     depends_on:
       - faucet
     networks:

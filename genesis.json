@@ -232,6 +232,16 @@
             "from": "wbtc",
             "to": "loki",
             "rate_multiplier": "3.000000000000000000"
+          },
+          {
+            "from": "odin",
+            "to": "loki",
+            "rate_multiplier": "100000.000000000000000000"
+          },
+          {
+            "from": "loki",
+            "to": "odin",
+            "rate_multiplier": "0.000000100000000000"
           }
         ]
       }
@@ -346,7 +356,7 @@
         "max_withdrawal_per_time": [
           {
             "denom": "loki",
-            "amount": "1000"
+            "amount": "1000000000"
           }
         ],
         "eligible_accounts_pool": [

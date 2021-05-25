@@ -135,11 +135,36 @@ services:
     restart: always
     command: odin-deposit-ether-svc run deposit
 
+  bsc_bridge:
+    image: odinprotocol/bsc-bridge:latest
+    networks:
+      default:
+        ipv4_address: 172.18.0.22
+    depends_on:
+      - validator4
+      - bsc_db
+    restart: always
+    volumes:
+      - ./configs/bsc-config.yaml:/go/app/config.yaml
+    ports:
+      - 90:80
+    command: sh -c "bsc-bridge-svc migrate up && bsc-bridge-svc run"
+
+  bsc_db:
+    image: postgres:13.2
+    volumes:
+      - database-data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
 volumes:
   vol1:
   vol2:
   vol3:
   vol4:
+  database-data:
 
 networks:
   default:

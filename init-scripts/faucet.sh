@@ -13,4 +13,4 @@ faucet config period 12h
 
 faucet config coins 10000000000minigeo,10000000000loki
 
-faucet config max-per-period-withdrawal 10000000000minigeo,10000000000loki
+faucet config max-withdrawal-per-period 10000000000minigeo,10000000000loki

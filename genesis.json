@@ -71,6 +71,13 @@
       "accounts": [
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "odin148s5nqzhs3gveqatj4uw8eycguj5eky82dgevh",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
           "address": "odin1nnfeguq30x6nwxjhaypxymx3nulyspsuja4a2x",
           "pub_key": null,
           "account_number": "0",
@@ -119,6 +126,19 @@
         "default_send_enabled": true
       },
       "balances": [
+        {
+          "address": "odin148s5nqzhs3gveqatj4uw8eycguj5eky82dgevh",
+          "coins": [
+            {
+              "denom": "loki",
+              "amount": "100000000000000"
+            },
+            {
+              "denom": "minigeo",
+              "amount": "2000000000000000"
+            }
+          ]
+        },
         {
           "address": "odin1nnfeguq30x6nwxjhaypxymx3nulyspsuja4a2x",
           "coins": [
@@ -185,11 +205,11 @@
       "supply": [
         {
           "denom": "loki",
-          "amount": "100000000000000"
+          "amount": "200000000000000"
         },
         {
           "denom": "minigeo",
-          "amount": "1000000000000000"
+          "amount": "3000000000000000"
         }
       ],
       "denom_metadata": []
@@ -199,19 +219,9 @@
       "owners": []
     },
     "coinswap": {
-      "initial_rate": "10.000000000000000000",
+      "initial_rate": "1.000000000000000000",
       "params": {
         "exchange_rates": [
-          {
-            "from": "loki",
-            "to": "eth",
-            "rate_multiplier": "1.500000000000000000"
-          },
-          {
-            "from": "eth",
-            "to": "loki",
-            "rate_multiplier": "2.000000000000000000"
-          },
           {
             "from": "loki",
             "to": "wbtc",
@@ -221,6 +231,26 @@
             "from": "wbtc",
             "to": "loki",
             "rate_multiplier": "3.000000000000000000"
+          },
+          {
+            "from": "loki",
+            "to": "eth",
+            "rate_multiplier": "0.000001000000000000"
+          },
+          {
+            "from": "eth",
+            "to": "loki",
+            "rate_multiplier": "1000000.000000000000000000"
+          },
+          {
+            "from": "loki",
+            "to": "odin",
+            "rate_multiplier": "0.000001000000000000"
+          },
+          {
+            "from": "odin",
+            "to": "loki",
+            "rate_multiplier": "1000000.000000000000000000"
           }
         ]
       }
@@ -300,7 +330,7 @@
         "voting_period": "2m"
       },
       "tally_params": {
-        "quorum": "0.000100000000000000",
+        "quorum": "0.500000000000000000",
         "threshold": "0.500000000000000000",
         "veto_threshold": "0.334000000000000000"
       }
@@ -341,7 +371,7 @@
         "annual_provisions": "0.000100000000000000"
       },
       "params": {
-        "eth_integration_address": "0xa19Df1199CeEfd7831576f1D055E454364337633",
+        "eth_integration_address": "0xd7e334D886260a40c3CB713b59531afD07f36E99",
         "mint_denom": "loki",
         "inflation_rate_change": "0.130000000000000000",
         "inflation_max": "0.200000000000000000",
@@ -352,7 +382,7 @@
         "max_withdrawal_per_time": [
           {
             "denom": "loki",
-            "amount": "1000"
+            "amount": "1000000000"
           }
         ],
         "eligible_accounts_pool": [

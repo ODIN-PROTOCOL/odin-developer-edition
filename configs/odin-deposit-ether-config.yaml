@@ -1,0 +1,28 @@
+log: info
+ethereum:
+  chain:
+    endpoint: "wss://data-seed-prebsc-1-s1.binance.org:8545"
+    gas_limit: 4000000
+    gas_price: 10000000000
+  signer:
+    private_key: "17ee26e84dcd379c371ce4932bd286da339f1b05d22fa605e31da3405ac793fb"
+odin:
+  chain:
+    endpoint: "172.18.0.14:9090"
+    chain_id: "odin"
+    denom: "loki"
+    memo: ""
+    gas_price: 10
+    gas_limit: 500000
+  signer:
+    mnemonic: "prize weapon virus foot mandate finger add strong world physical token castle knee bracket armed quit brand physical neglect film tip okay view broken"
+    password: ""
+    derivation: "m/44'/494'/0'/0/0"
+  bridge_address_storage: "ADDRESS_STORAGE.txt"
+deploy:
+  refund_gas_limit: 1000000
+  depositing_allowed: true
+  locking_funds_allowed: true
+  claiming_locked_funds_allowed: false
+  supported_tokens:
+    - "0x2Ab2251b82C7571D15d47e0295D8f074183E3993"

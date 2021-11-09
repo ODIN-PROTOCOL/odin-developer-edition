@@ -1,0 +1,15 @@
+log:
+  disable_sentry: true
+
+db:
+  url: postgres://telemetry:telemetry@odin-telemetry_db/telemetry?sslmode=disable
+
+listener:
+  addr: :8100
+
+cop:
+  disabled: true
+
+core:
+  endpoint_api: "http://35.195.4.110:1317"
+  endpoint_node: "35.195.4.110:26657"

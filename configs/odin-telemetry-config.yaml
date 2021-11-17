@@ -13,3 +13,6 @@ cop:
 core:
   endpoint_api: "http://35.195.4.110:1317"
   endpoint_node: "35.195.4.110:26657"
+
+cors:
+  disabled: true

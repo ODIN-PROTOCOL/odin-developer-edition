@@ -142,6 +142,8 @@ services:
       - KV_VIPER_FILE=/config.yaml
     depends_on:
       - odin-telemetry_db
+    ports:
+      - 8100:8100
     volumes:
       - ./configs/odin-telemetry-config.yaml:/config.yaml
     restart: always

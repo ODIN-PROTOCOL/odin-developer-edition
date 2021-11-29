@@ -7,7 +7,7 @@ services:
     command: /init-scripts/init.sh validator1
     volumes:
       - ./init-scripts:/init-scripts
-      - vol1:/root/.band
+      - vol1:/root/.odin
       - ./genesis.json:/genesis.json
 
   init2:
@@ -18,7 +18,7 @@ services:
     command: /init-scripts/init.sh validator2
     volumes:
       - ./init-scripts:/init-scripts
-      - vol2:/root/.band
+      - vol2:/root/.odin
       - ./genesis.json:/genesis.json
 
   init3:
@@ -29,7 +29,7 @@ services:
     command: /init-scripts/init.sh validator3
     volumes:
       - ./init-scripts:/init-scripts
-      - vol3:/root/.band
+      - vol3:/root/.odin
       - ./genesis.json:/genesis.json
 
   init4:
@@ -40,7 +40,7 @@ services:
     command: /init-scripts/init.sh validator4
     volumes:
       - ./init-scripts:/init-scripts
-      - vol4:/root/.band
+      - vol4:/root/.odin
       - ./genesis.json:/genesis.json
 
   validator1:
@@ -51,9 +51,9 @@ services:
     networks:
       default:
         ipv4_address: 172.18.0.11
-    command: bandd start --rpc.laddr tcp://0.0.0.0:26657 --p2p.persistent_peers 11392b605378063b1c505c0ab123f04bd710d7d7@172.18.0.11:26656,0851086afcd835d5a6fb0ffbf96fcdf74fec742e@172.18.0.12:26656,63808bd64f2ec19acb2a494c8ce8467c595f6fba@172.18.0.14:26656,7b58b086dd915a79836eb8bfa956aeb9488d13b0@172.18.0.13:26656
+    command: odind start --rpc.laddr tcp://0.0.0.0:26657 --p2p.persistent_peers 11392b605378063b1c505c0ab123f04bd710d7d7@172.18.0.11:26656,0851086afcd835d5a6fb0ffbf96fcdf74fec742e@172.18.0.12:26656,63808bd64f2ec19acb2a494c8ce8467c595f6fba@172.18.0.14:26656,7b58b086dd915a79836eb8bfa956aeb9488d13b0@172.18.0.13:26656
     volumes:
-      - vol1:/root/.band
+      - vol1:/root/.odin
 
   validator2:
     container_name: validator2
@@ -63,9 +63,9 @@ services:
     networks:
       default:
         ipv4_address: 172.18.0.12
-    command: bandd start --rpc.laddr tcp://0.0.0.0:26657 --p2p.persistent_peers 11392b605378063b1c505c0ab123f04bd710d7d7@172.18.0.11:26656,0851086afcd835d5a6fb0ffbf96fcdf74fec742e@172.18.0.12:26656,63808bd64f2ec19acb2a494c8ce8467c595f6fba@172.18.0.14:26656,7b58b086dd915a79836eb8bfa956aeb9488d13b0@172.18.0.13:26656
+    command: odind start --rpc.laddr tcp://0.0.0.0:26657 --p2p.persistent_peers 11392b605378063b1c505c0ab123f04bd710d7d7@172.18.0.11:26656,0851086afcd835d5a6fb0ffbf96fcdf74fec742e@172.18.0.12:26656,63808bd64f2ec19acb2a494c8ce8467c595f6fba@172.18.0.14:26656,7b58b086dd915a79836eb8bfa956aeb9488d13b0@172.18.0.13:26656
     volumes:
-      - vol2:/root/.band
+      - vol2:/root/.odin
 
   validator3:
     container_name: validator3
@@ -75,9 +75,9 @@ services:
     networks:
       default:
         ipv4_address: 172.18.0.13
-    command: bandd start --rpc.laddr tcp://0.0.0.0:26657 --p2p.persistent_peers 11392b605378063b1c505c0ab123f04bd710d7d7@172.18.0.11:26656,0851086afcd835d5a6fb0ffbf96fcdf74fec742e@172.18.0.12:26656,63808bd64f2ec19acb2a494c8ce8467c595f6fba@172.18.0.14:26656,7b58b086dd915a79836eb8bfa956aeb9488d13b0@172.18.0.13:26656
+    command: odind start --rpc.laddr tcp://0.0.0.0:26657 --p2p.persistent_peers 11392b605378063b1c505c0ab123f04bd710d7d7@172.18.0.11:26656,0851086afcd835d5a6fb0ffbf96fcdf74fec742e@172.18.0.12:26656,63808bd64f2ec19acb2a494c8ce8467c595f6fba@172.18.0.14:26656,7b58b086dd915a79836eb8bfa956aeb9488d13b0@172.18.0.13:26656
     volumes:
-      - vol3:/root/.band
+      - vol3:/root/.odin
 
   validator4:
     container_name: validator4
@@ -87,7 +87,7 @@ services:
     networks:
       default:
         ipv4_address: 172.18.0.14
-    command: bandd start --rpc.laddr tcp://0.0.0.0:26657 --p2p.persistent_peers 11392b605378063b1c505c0ab123f04bd710d7d7@172.18.0.11:26656,0851086afcd835d5a6fb0ffbf96fcdf74fec742e@172.18.0.12:26656,63808bd64f2ec19acb2a494c8ce8467c595f6fba@172.18.0.14:26656,7b58b086dd915a79836eb8bfa956aeb9488d13b0@172.18.0.13:26656
+    command: odind start --rpc.laddr tcp://0.0.0.0:26657 --p2p.persistent_peers 11392b605378063b1c505c0ab123f04bd710d7d7@172.18.0.11:26656,0851086afcd835d5a6fb0ffbf96fcdf74fec742e@172.18.0.12:26656,63808bd64f2ec19acb2a494c8ce8467c595f6fba@172.18.0.14:26656,7b58b086dd915a79836eb8bfa956aeb9488d13b0@172.18.0.13:26656
     ports:
       - 26658:26658
       - 26657:26657
@@ -95,7 +95,7 @@ services:
       - 9090:9090
       - 1317:1317
     volumes:
-      - vol4:/root/.band
+      - vol4:/root/.odin
 
   faucet:
     container_name: faucet

@@ -132,10 +132,6 @@
             {
               "denom": "loki",
               "amount": "100000000000000"
-            },
-            {
-              "denom": "minigeo",
-              "amount": "2000000000000000"
             }
           ]
         },
@@ -145,10 +141,6 @@
             {
               "denom": "loki",
               "amount": "10000000000000"
-            },
-            {
-              "denom": "minigeo",
-              "amount": "100000000000000"
             }
           ]
         },
@@ -158,10 +150,6 @@
             {
               "denom": "loki",
               "amount": "10000000000000"
-            },
-            {
-              "denom": "minigeo",
-              "amount": "100000000000000"
             }
           ]
         },
@@ -206,10 +194,6 @@
         {
           "denom": "loki",
           "amount": "200000000000000"
-        },
-        {
-          "denom": "minigeo",
-          "amount": "3000000000000000"
         }
       ],
       "denom_metadata": []
@@ -222,26 +206,6 @@
       "initial_rate": "1.000000000000000000",
       "params": {
         "exchange_rates": [
-          {
-            "from": "loki",
-            "to": "wbtc",
-            "rate_multiplier": "2.000000000000000000"
-          },
-          {
-            "from": "wbtc",
-            "to": "loki",
-            "rate_multiplier": "3.000000000000000000"
-          },
-          {
-            "from": "loki",
-            "to": "eth",
-            "rate_multiplier": "0.000001000000000000"
-          },
-          {
-            "from": "eth",
-            "to": "loki",
-            "rate_multiplier": "1000000.000000000000000000"
-          },
           {
             "from": "loki",
             "to": "odin",
@@ -289,11 +253,7 @@
         "community_pool": [
           {
             "denom": "loki",
-            "amount": "29992000000000"
-          },
-          {
-            "denom": "minigeo",
-            "amount": "800000000000000"
+            "amount": "49992000000000"
           }
         ]
       },
@@ -381,7 +341,7 @@
         "inflation_min": "0.070000000000000000",
         "goal_bonded": "0.670000000000000000",
         "blocks_per_year": "10519200",
-        "mint_air": false,
+        "mint_air": true,
         "max_withdrawal_per_time": [
           {
             "denom": "loki",
@@ -415,14 +375,14 @@
         "max_calldata_size": "1024",
         "data_provider_reward_per_byte": [
           {
-            "denom": "minigeo",
+            "denom": "loki",
             "amount": "1000000"
           }
         ],
         "data_provider_reward_threshold": {
           "amount": [
             {
-              "denom": "minigeo",
+              "denom": "loki",
               "amount": "200000000000"
             }
           ],
@@ -437,10 +397,6 @@
       "oracle_scripts": [],
       "oracle_pool": {
         "data_providers_pool": [
-          {
-            "denom": "loki",
-            "amount": "20000000000000"
-          }
         ]
       }
     },

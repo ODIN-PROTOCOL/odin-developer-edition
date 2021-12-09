@@ -1,12 +1,12 @@
 #!/bin/bash
 
 echo "usage ketchup faculty bench jewel rocket latin absurd decide field party reunion cook entry scout scene miss box memory museum decorate guide few verify" \
-    | bandd keys add $1 --recover --keyring-backend test
+    | odind keys add $1 --recover --keyring-backend test
 
-echo "y" | bandd tx oracle activate --from $1 --chain-id odin --keyring-backend test --node $2 --broadcast-mode block
+echo "y" | odind tx oracle activate --from $1 --chain-id odin --keyring-backend test --node $2 --broadcast-mode block
 
 # Create system validator
-echo "y" | bandd tx staking create-validator \
+echo "y" | odind tx staking create-validator \
   --amount 100000000loki \
   --commission-max-change-rate 0.010000000000000000 \
   --commission-max-rate 0.200000000000000000 \
@@ -21,7 +21,7 @@ echo "y" | bandd tx staking create-validator \
   --chain-id odin
 
 # Create data source and oracle script
-echo "y" | bandd tx oracle create-data-source \
+echo "y" | odind tx oracle create-data-source \
   --name "mock data source" \
   --description "mock data source with 'Hello, World!'" \
   --script /data-source-scripts/mock.py \
@@ -34,7 +34,7 @@ echo "y" | bandd tx oracle create-data-source \
   --node $2 \
   --chain-id odin
 
-echo "y" | bandd tx oracle create-oracle-script \
+echo "y" | odind tx oracle create-oracle-script \
   --name "mock oracle script" \
   --description "mock oracle script with 'Hello, World!' going on 1 DS" \
   --script /oracle-scripts/mock.wasm \
